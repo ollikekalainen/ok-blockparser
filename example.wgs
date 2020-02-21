@@ -1,0 +1,526 @@
+<:*** Api Specifications ***:>
+<:
+	<: name: MyApp :>
+	<: slot: public :>
+	<: userManagementDisabled: true :>
+	<: date: 20200210 :>
+	<: serviceHelper: ./serviceHelper.js :>
+	<: services: <:
+		<: addProduct: <:
+			<: 1:
+				<: id: {2EF604D9-A85E-45A5-B493-70DBD7070DA4} :>
+				<: description:
+					Add a new product.
+				:>
+				<: parameters: <:
+					<: language:
+						<: description:
+							Language abbreviation
+						:>
+						<: type: string :>
+						<: defaultValue: "fi" :>
+						<: mandatory: false :>
+					:>
+					<: productgroupid:
+						<: description:
+							Id of the product group as guid string
+						:>
+						<: type: string :>
+						<: defaultValue:  :>
+						<: mandatory: true :>
+					:>
+					<: companyid:
+						<: description:
+							Id of the company as guid string
+						:>
+						<: type: string :>
+						<: defaultValue:  :>
+						<: mandatory: true :>
+					:>
+					<: caption:
+						<: description:
+							Caption of the product as string
+						:>
+						<: type: string :>
+						<: defaultValue:  :>
+						<: mandatory: true :>
+					:>
+					<: description:
+						<: description:
+							Description text of the product as string
+						:>
+						<: type: string :>
+						<: defaultValue: "" :>
+						<: mandatory: false :>
+					:>
+					<: begindate:
+						<: description:
+							The date from which the selling of the product begins as ISO date string (yyymmdd)
+						:>
+						<: type: string :>
+						<: defaultValue:  :>
+						<: mandatory: true :>
+					:>
+					<: enddate:
+						<: description:
+							The date the selling of the product ends as ISO date string (yyymmdd)
+						:>
+						<: type: string :>
+						<: defaultValue:  :>
+						<: mandatory: true :>
+					:>
+					<: price:
+						<: description:
+							The price of the product as a decimal value between 0.00-99.00
+						:>
+						<: type: number :>
+						<: defaultValue:  :>
+						<: mandatory: true :>
+					:>
+					<: vat:
+						<: description:
+							The VAT percentage of the product as a decimal value between 0.00-99.00
+						:>
+						<: type: number :>
+						<: defaultValue:  :>
+						<: mandatory: true :>
+					:>
+					<: quantity:
+						<: description:
+							The quantity of the product as a number between 1-2000
+						:>
+						<: type: number :>
+						<: defaultValue:  :>
+						<: mandatory: true :>
+					:>
+					<: expirationtime:
+						<: description:
+							The time (as seconds) within which the product must be sold
+						:>
+						<: type: number :>
+						<: defaultValue:  :>
+						<: mandatory: true :>
+					:>
+					<: paymenttypes:
+						<: description:
+							A comma separated list of payment type ids/typevalues and extracost values (separated by slash character) as string
+						:>
+						<: type: string :>
+						<: defaultValue:  :>
+						<: mandatory: true :>
+					:>
+					<: stamps:
+						<: description:
+							Number indicating how many times the ticket can be stamped.
+						:>
+						<: type: number :>
+						<: defaultValue: 0 :>
+						<: mandatory: false :>
+					:>
+				:>:>
+				<: authRequired: false :>
+				<: loginRequired: true :>
+				<: setPublic: false :>
+				<: permitLocal: true :>
+				<: skipLog: false :>
+				<: disableExposition: false :>
+				<: responseContent:
+					guid
+				:>
+			:>
+		:>:>
+		<: changeProduct: <:
+			<: 1:
+				<: id: {9A2B9C3D-B147-4423-AFCB-62FF0A5906A0} :>
+				<: description:
+					Change product information.
+				:>
+				<: parameters: <:
+					<: language:
+						<: description:
+							Language abbreviation
+						:>
+						<: type: string :>
+						<: defaultValue: "fi" :>
+						<: mandatory: false :>
+					:>
+					<: id:
+						<: description:
+							Id of the product as guid string
+						:>
+						<: type: string :>
+						<: defaultValue:  :>
+						<: mandatory: true :>
+					:>
+					<: productgroupid:
+						<: description:
+							Id of the product group as guid string
+						:>
+						<: type: string :>
+						<: defaultValue: "" :>
+						<: mandatory: false :>
+					:>
+					<: caption:
+						<: description:
+							Caption of the product as string
+						:>
+						<: type: string :>
+						<: defaultValue: "" :>
+						<: mandatory: false :>
+					:>
+					<: description:
+						<: description:
+							Description text of the product as string
+						:>
+						<: type: string :>
+						<: defaultValue: "" :>
+						<: mandatory: false :>
+					:>
+					<: begindate:
+						<: description:
+							The date from which the selling of the product begins as ISO date string (yyymmdd)
+						:>
+						<: type: string :>
+						<: defaultValue: "" :>
+						<: mandatory: false :>
+					:>
+					<: enddate:
+						<: description:
+							The date the selling of the product ends as ISO date string (yyymmdd)
+						:>
+						<: type: string :>
+						<: defaultValue: "" :>
+						<: mandatory: false :>
+					:>
+					<: price:
+						<: description:
+							The price of the product as a decimal value between 0.00-99.00
+						:>
+						<: type: number :>
+						<: defaultValue:  :>
+						<: mandatory: false :>
+					:>
+					<: vat:
+						<: description:
+							The VAT percentage of the product as a decimal value between 0.00-99.00
+						:>
+						<: type: number :>
+						<: defaultValue:  :>
+						<: mandatory: false :>
+					:>
+					<: quantity:
+						<: description:
+							The quantity of the product as a number between 1-2000
+						:>
+						<: type: number :>
+						<: defaultValue:  :>
+						<: mandatory: false :>
+					:>
+					<: expirationtime:
+						<: description:
+							The time (as seconds) within which the product must be sold
+						:>
+						<: type: number :>
+						<: defaultValue:  :>
+						<: mandatory: false :>
+					:>
+					<: paymenttypes:
+						<: description:
+							A comma separated list of payment type ids/typevalues and extracost values (separated by slash character) as string
+						:>
+						<: type: string :>
+						<: defaultValue: "" :>
+						<: mandatory: false :>
+					:>
+					<: stamps:
+						<: description:
+							Number indicating how many times the ticket can be stamped.
+						:>
+						<: type: number :>
+						<: defaultValue:  :>
+						<: mandatory: false :>
+					:>
+				:>:>
+				<: authRequired: false :>
+				<: loginRequired: true :>
+				<: setPublic: false :>
+				<: permitLocal: true :>
+				<: skipLog: false :>
+				<: disableExposition: false :>
+				<: responseContent:
+					guid
+				:>
+			:>
+		:>:>
+		<: getProduct: <:
+			<: 1:
+				<: id: {0B45BF2F-E56F-485F-AC48-C020E7FBABFB} :>
+				<: description:
+					Get the product.
+				:>
+				<: parameters: <:
+					<: language:
+						<: description:
+							Language abbreviation
+						:>
+						<: type: string :>
+						<: defaultValue: "fi" :>
+						<: mandatory: false :>
+					:>
+					<: id:
+						<: description:
+							Id of the product to be retrieved as a guid string
+						:>
+						<: type: string :>
+						<: defaultValue:  :>
+						<: mandatory: true :>
+					:>
+					<: includesupplements:
+						<: description:
+							Includes language specific properties of all languages into the property 'supplements' of every product. If set true, the language parameter does not have effect.
+						:>
+						<: type: boolean :>
+						<: defaultValue: false :>
+						<: mandatory: false :>
+					:>
+				:>:>
+				<: authRequired: false :>
+				<: loginRequired: false :>
+				<: setPublic: false :>
+				<: permitLocal: false :>
+				<: skipLog: false :>
+				<: disableExposition: false :>
+				<: responseContent:
+					{
+					    id: string,
+					    productgroupid: string,
+					    comanyid: string,
+					    comanyname: string,
+					    caption: string,
+					    description: string,
+					    firstselldate: string,
+					    lastselldate: string,
+					    price: number,
+					    vat: number,
+					    quantity: number,
+					    solditems: number,
+					    availableitems: number,
+					    expirationtime: number,
+					    deleted: boolean,
+					    deletedate: string,
+					    modified: string,
+					    paymenttypes: [
+					        {
+					            id: string,
+					            caption: string,
+					            description: string,
+					            type: number,
+					            extracost: number
+					        },
+					        ...,
+					        {
+					            id: string,
+					            caption: string,
+					            description: string,
+					            type: number,
+					            extracost: number
+					        }
+					    ][,
+					        supplements: {
+					                <languageAbbreviation(1)>: {
+					                     caption: string,
+					                     description: string
+					                },
+					                ...,
+					                <languageAbbreviation(n)>: {
+					                     caption: string,
+					                     description: string
+					                }
+					        }]
+					}
+				:>
+			:>
+		:>:>
+		<: getProducts: <:
+			<: 1:
+				<: id: {06CB8E51-2E2E-4600-BAA5-78646780458F} :>
+				<: description:
+					Get products.
+				:>
+				<: parameters: <:
+					<: language:
+						<: description:
+							Language abbreviation
+						:>
+						<: type: string :>
+						<: defaultValue: "fi" :>
+						<: mandatory: false :>
+					:>
+					<: productgroupid:
+						<: description:
+							Id of the product group as guid string
+						:>
+						<: type: string :>
+						<: defaultValue: "false" :>
+						<: mandatory: false :>
+					:>
+					<: companyid:
+						<: description:
+							Id of the company as guid string
+						:>
+						<: type: string :>
+						<: defaultValue: "" :>
+						<: mandatory: false :>
+					:>
+					<: includesupplements:
+						<: description:
+							Includes language specific properties of all languages into the property 'supplements' of every product. If set true, the language parameter does not have effect.
+						:>
+						<: type: boolean :>
+						<: defaultValue: false :>
+						<: mandatory: false :>
+					:>
+					<: modifiedafter:
+						<: description:
+							ISO date string filtering the products modified since it
+						:>
+						<: type: string :>
+						<: defaultValue: "" :>
+						<: mandatory: false :>
+					:>
+				:>:>
+				<: authRequired: false :>
+				<: loginRequired: false :>
+				<: setPublic: false :>
+				<: permitLocal: false :>
+				<: skipLog: false :>
+				<: disableExposition: false :>
+				<: responseContent:
+					[
+					    {
+					        id: string,
+					        productgroupid: string,
+					        comanyid: string,
+					        comanyname: string,
+					        caption: string,
+					        description: string,
+					        firstselldate: string,
+					        lastselldate: string,
+					        price: number,
+					        vat: number,
+					        quantity: number,
+					        solditems: number,
+					        availableitems: number,
+					        expirationtime: number,
+					        deleted: boolean,
+					        deletedate: string,
+					        modified: string,
+					        paymenttypes: [
+					            {
+					                id: string,
+					                caption: string,
+					                description: string,
+					                type: number,
+					                extracost: number
+					            },
+					            ...,
+					            {
+					                id: string,
+					                caption: string,
+					                description: string,
+					                type: number,
+					                extracost: number
+					            }
+					        ][,
+					        supplements: {
+					                <languageAbbreviation(1)>: {
+					                     caption: string,
+					                     description: string
+					                },
+					                ...,
+					                <languageAbbreviation(n)>: {
+					                     caption: string,
+					                     description: string
+					                }
+					        }]
+					    },
+					    ...
+					]
+				:>
+			:>
+		:>:>
+		<: removeProduct: <:
+			<: 1:
+				<: id: {66359C14-CF1B-4011-81E4-DB6818A60D93} :>
+				<: description:
+					Remove the product.
+				:>
+				<: parameters: <:
+					<: id:
+						<: description:
+							Id of the product to be removed as a guid string
+						:>
+						<: type: string :>
+						<: defaultValue:  :>
+						<: mandatory: true :>
+					:>
+					<: permanently:
+						<: description:
+							A logical value indicating whether the product is removed for good (true) or just marked as deleted (false)
+						:>
+						<: type: boolean :>
+						<: defaultValue: false :>
+						<: mandatory: false :>
+					:>
+				:>:>
+				<: authRequired: false :>
+				<: loginRequired: true :>
+				<: setPublic: false :>
+				<: permitLocal: true :>
+				<: skipLog: false :>
+				<: disableExposition: false :>
+				<: responseContent:
+					
+				:>
+			:>
+		:>:>
+		<: sellProduct: <:
+			<: 1:
+				<: id: {8479D185-31BC-4C7D-8512-0BDD768B7637} :>
+				<: description:
+					Sell the desired quantity of product.
+				:>
+				<: parameters: <:
+					<: id:
+						<: description:
+							Id of the product to be sold as a guid string
+						:>
+						<: type: string :>
+						<: defaultValue:  :>
+						<: mandatory: true :>
+					:>
+					<: quantity:
+						<: description:
+							Number of items sold
+						:>
+						<: type: number :>
+						<: defaultValue: 1 :>
+						<: mandatory: false :>
+					:>
+				:>:>
+				<: authRequired: false :>
+				<: loginRequired: false :>
+				<: setPublic: false :>
+				<: permitLocal: false :>
+				<: skipLog: false :>
+				<: disableExposition: false :>
+				<: responseContent:
+					{
+					    quantity: number, // number of items after sale
+					    solditems: number // number of items sold
+					}
+				:>
+			:>
+		:>:>
+	:>:>
+:>

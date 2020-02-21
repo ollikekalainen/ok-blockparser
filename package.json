@@ -1,0 +1,25 @@
+{
+  "main": "blockparser.js",
+  "name": "webgear",
+  "version": "1.0.0",
+  "description": "Expandable text block parser",
+  "dependencies": {
+  },
+  "scripts": {
+  },
+  "engines": {
+    "node": ">= 8.11.3"
+  },
+  "bugs": "https://github.com/ollikekalainen/ok-blockparser/issues",
+  "keywords": [
+    "javascript",
+    "web service"
+  ],
+    "repository": {
+    "type": "git",
+    "url": "git://github.com/ollikekalainen/ok-blockparser.git"
+  },
+  "homepage": "https://github.com/ollikekalainen/ok-blockparser",
+  "author": "Olli Kekäläinen",
+  "license": "MIT"
+}
