@@ -50,19 +50,20 @@ Descriptions for the option object's parameters are the same as the parser prope
 
 Following properties can be set as option object parameters or get/set as parser object's properties.
 
-- 	**blockBegin** *string* - Block opening character or character combination.
+- 	**blockBegin** *string* - Block opening character or character combination. Default value is *"<:"*.
 
-- 	**blockEnd** *string* - Block closing character or character combination.
+- 	**blockEnd** *string* - Block closing character or character combination. Default value is *":>"*.
 
 - 	**ignoreQuotes** *boolean* - A boolean value that indicates whether the parser should take note of the double/single quotes 
-	and backtick characters.
+	and backtick characters. Default value is *false*.
 
-- 	**ignoreUnclosedStringErrors** *boolean* - A boolean value that indicates whether the parser should interrupt the parsing when the string
-	literal surrounded by double/single quote is unclosed ie. the new line character is encountered 
+- 	**ignoreUnclosedStringErrors** *boolean* - A boolean value that indicates whether the parser should interrupt the parsing when the
+	string literal surrounded by double/single quote is unclosed ie. the new line character is encountered 
 	before the closing quote. This property value is meaninful only if the **ignoreQuotes** is set
 	*false*.
 
-- 	**trimContent** *boolean* - A boolean value that indicates whether the contents of the blocks should be trimmed before it is passed to the handler.
+- 	**trimContent** *boolean* - A boolean value that indicates whether the contents of the blocks 
+	should be trimmed before it is passed to the handler.  Default value is *true*.
 
 
 #### During the parsing
@@ -90,50 +91,49 @@ Following properties are usefull for the handler object within the parsing opera
 
 -  **parse( onError, onSuccess, source )** - Starts parsing operation.
 	- **onError** *function(error)* - Called in the case of error. Possible error messages are:
-		- E_UNCLOSEDSINGLEQUOTE (row: [ROWNUMBER])
-		- E_UNCLOSEDDOUBLEQUOTE (row: [ROWNUMBER])
-		- E_UNCLOSEDBACKTICK (row: [ROWNUMBER])
+		- E_UNCLOSEDSINGLEQUOTE (row: *row_number*)
+		- E_UNCLOSEDDOUBLEQUOTE (row: *row_number*)
+		- E_UNCLOSEDBACKTICK (row: *row_number*)
 		- E_TOOMENYBLOCKENDS
 		- E_UNCLOSEDBLOCK
 
 
 	- **onSuccess** *function(result)* - Called when the parsing is successfully finished. Parameter *result*
-		contains the contents of handler object's result property.Withe the default handler this value is an *array*.
+		contains the contents of the handler object's result property. For the default handler this, value is *array*.
 
 
 
 
 ## Handler object
 
-In order to work **ok-blockparser** needs the handler object for the assembling the parsed text blocks into the desired result.
-Parser's default handler converts the parsed text into an *array*.
+In order to work **ok-blockparser** needs the handler object to assemble the parsed text blocks as desired.
+The default handler converts the parsed text into an *array*.
 
 
 ### Properties and methods
 
-First, the handler object assigned to the handler property of the parser should have method named **handle**.
-The prototype of the method is following:
+First, the handler object assigned to the *handler* property of the parser should have a method called **handle**.
+The prototype of the method is as follows:
 
 **handle( content, mode )**
-- **content** *string*
-	Contains parsed text. The passed sting is may be trimmed according the value parser's
-	trimContent property. See more in the description of the mode parameter.
-- **mode** *number*, may be one of the folliwing values:
-	- **1**	- The parser is just encountered the opening character of next text block. Here the **content**
-		contains the text after the previous block's closing character and before the next one's 
-		opening character.
-	- -**1** - The parser is just encountered the closing character of current text block. Here the **content**
-		contains the text before this closing mark and after the possible inner block's closing mark
+- **content** *string* - Contains parsed text. The passed sting may be trimmed according the value of parser's
+	trimContent property. See the description of the *mode* parameter for more information
+- **mode** *number* - May be one of the folliwing values:
+	- **1**	- The parser is just detected the opening character(s) of the next text block. Here the **content**
+		contains the text after the previous block's closing character(s) and before the next one's 
+		opening character(s).
+	- **-1** - The parser is just detected the closing character(s) of current text block. Here the **content**
+		contains the text before this closing mark and after the possible inner block's closing character(s)
 		or in case there exist any inner blocks, the whole text content of the block.
 	- **0** - The parser is just reached the end of the text. Here the **content**
-		contains the text after the last block closing mark.
+		contains the text after the closing character(s) of the last block.
 
 
-Secondly, the handler should have the parameter (or getter/setter) named **result**. It should 
-contain (or return in case of getter) the assembled value that is in turn passed as the **parse** 
-methods onSuccess function's parameter after the parsing is successfully finished.
+Secondly, the handler should have the parameter (or getter/setter) called **result**. It should 
+contain (or return in case of getter) the assembled value, which is in turn is passed as the parameter of the **parse** 
+method's onSuccess function when the parsing is successfully completed.
 
-Default handler also contains the **parser** property that provides access to the parser object.
+Default handler also contains the **parser** property, which provides access to the parser object.
 
 
 
@@ -169,8 +169,8 @@ Default handler also contains the **parser** property that provides access to th
 
 ### Replacing the default handler
 
-In order to replace the default handler with your own handler assign the new
-handler as a value to parser's **handler** property.
+In order to replace the default handler with your own handler, set the new
+handler as a value of the parser's **handler** property.
 
 
 	const Parser = require( "ok-blockparser" );
