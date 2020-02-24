@@ -1,7 +1,7 @@
 {
   "main": "blockparser.js",
   "name": "ok-blockparser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple text block parser implemented with javascript",
   "dependencies": {
   },
